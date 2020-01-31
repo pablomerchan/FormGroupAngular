@@ -1,0 +1,91 @@
+<form [formGroup]="form" novalidate (ngSubmit)="save($event)">
+      <p>
+      Name: <br/>
+      <input type="text" formControlName="name">
+      </p>
+
+      <div style="color:red;" *ngIf="form.get('name').errors && form.get('name').touched">
+        <p *ngIf="form.get('name').hasError('required')">
+          Name Es un campo requerido
+        </p>
+       
+      </div>
+
+
+    <p>
+      Fecha: <br/>
+      <input type="date" formControlName="date">
+    </p>
+    <div style="color:red;" *ngIf="form.get('date').errors && form.get('date').touched">
+      <p *ngIf="form.get('date').hasError('required')">
+        Date Es un campo requerido
+      </p>
+     
+    </div>
+
+
+    <p>
+      Email: <br/>
+      <input type="email" formControlName="email">
+    </p>
+    <div style="color:red;" *ngIf="form.get('email').errors && form.get('email').touched">
+      <p *ngIf="form.get('email').hasError('required')">
+        email Es un campo requerido
+      </p>
+     
+    </div>
+
+
+    <p>
+      Texto largo: <br/>
+      <textarea cols="30" rows="10" formControlName="text"></textarea>
+      {{form.get('text').value.length}} de 80
+    </p>
+
+    <div *ngIf="form.get('text').errors && form.get('text').touched">
+      <p *ngIf="form.get('text').hasError('required')">
+        Es un campo requerido
+      </p>
+      <p style="color:red;" *ngIf="form.get('text').hasError('maxlength')">
+        Te pasaste, máximo deben haber 80 caracteres.
+      </p>
+    </div>
+
+
+    <p>
+      Category: <br/>
+      <select formControlName="category">
+        <option value="1">Category 1</option>
+        <option value="2">Category 2</option>
+        <option value="3">Category 3</option>
+      </select>
+    </p>
+
+    <div style="color:red;" *ngIf="form.get('category').errors && form.get('category').touched">
+      <p *ngIf="form.get('category').hasError('required')">
+        Category Es un campo requerido
+      </p>
+     
+    </div>
+
+
+
+    <p>
+      Genero: <br/>
+      <input type="radio" name="gender" formControlName="gender" value="male"> Male<br>
+      <input type="radio" name="gender" formControlName="gender" value="female"> Female<br>
+      <input type="radio" name="gender" formControlName="gender" value="other"> Other
+    </p>
+
+    <div *ngIf="form.get('gender').errors && form.get('gender').touched">
+      <p style="color:red;" *ngIf="form.get('gender').hasError('required')">
+        Genero Es un campo requerido
+      </p>
+     
+      
+
+    </div>
+
+    <!-- <button type="submit" [disabled]="form.invalid">Guardar</button>   -->
+    <button type="submit" >Guardar</button>  
+  </form>
